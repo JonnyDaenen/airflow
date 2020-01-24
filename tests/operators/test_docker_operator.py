@@ -270,13 +270,13 @@ class DockerOperatorTestCase(unittest.TestCase):
             'tty': True,
         }
 
-        xcom_push_operator = DockerOperator(do_xcom_push=True, **kwargs)
-        no_xcom_push_operator = DockerOperator(do_xcom_push=False, **kwargs)
+        xcom_push_operator = DockerOperator(xcom_push=True, **kwargs)
+        no_xcom_push_operator = DockerOperator(xcom_push=False, **kwargs)
 
         xcom_push_result = xcom_push_operator.execute(None)
         no_xcom_push_result = no_xcom_push_operator.execute(None)
 
-        self.assertEqual(xcom_push_result, b'container log')
+        self.assertEqual(xcom_push_result, 'container log')
         self.assertIs(no_xcom_push_result, None)
 
 
