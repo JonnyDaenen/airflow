@@ -103,8 +103,8 @@ class SerializedDagModelTest(unittest.TestCase):
         filtered_example_dags_list = [dag for dag in example_dags_list if not dag.is_subdag]
         # Tests removing by file path.
         dag_removed_by_file = filtered_example_dags_list[0]
-        # remove repeated files for those DAGs that define multiple dags in the same file ( list(set( )
-        example_dag_files = list(set([dag.full_filepath for dag in filtered_example_dags_list]))
+        # remove repeated files for those DAGs that define multiple dags in the same file (set comprehension)
+        example_dag_files = list({dag.full_filepath for dag in filtered_example_dags_list})
         example_dag_files.remove(dag_removed_by_file.full_filepath)
         SDM.remove_deleted_dags(example_dag_files)
         self.assertFalse(SDM.has_dag(dag_removed_by_file.dag_id))
