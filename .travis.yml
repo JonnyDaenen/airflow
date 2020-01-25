@@ -36,13 +36,13 @@ jobs:
       stage: pre-test
       script: ./scripts/ci/ci_run_all_static_tests.sh
       env: >-
-        PYTHON_VERSION=3.6
+        PYTHON_VERSION=3.5
         AIRFLOW_MOUNT_SOURCE_DIR_FOR_STATIC_CHECKS="true"
     - name: "Build documentation"
       stage: test
       script: ./scripts/ci/ci_docs.sh
       env: >-
-        PYTHON_VERSION=3.6
+        PYTHON_VERSION=3.5
     - name: "Tests [Postgres][3.6][Kubernetes][persistent]"
       env: >-
         BACKEND=postgres
