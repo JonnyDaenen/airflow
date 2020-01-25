@@ -1199,6 +1199,7 @@ def checkdb(args):  # noqa
     print("DB: " + repr(settings.engine.url))
     db.checkdb()
 
+
 def version(args):  # noqa
     py2_deprecation_waring()
     print(settings.HEADER + "  v" + airflow.__version__)
